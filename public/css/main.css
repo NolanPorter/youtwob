@@ -1,8 +1,18 @@
 body {
 }
+img {
+    width: 25px;
+    height: 25px;
+}
 .starter-template {
   padding: 40px 15px;
   text-align: center;
+}
+.container {
+    width: 720px;
+}
+#bottom {
+    display: flex;
 }
 #player {
     display: block;
@@ -10,4 +20,25 @@ body {
     margin-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
+}
+#progressbar {
+    width: 600px;
+    height: 35px;
+    margin-left: 10px;
+    float: left;
+}
+.progressline {
+    border-style: solid;
+    top: 50%;
+    position: relative;
+    border-width: 1px;
+}
+.progressbox {
+    height: 15px;
+    width: 15px;
+    position: relative;
+    border-width: 2px;
+    border-style: solid;
+    top: 8.5px;
+    left: 0%;
 }
