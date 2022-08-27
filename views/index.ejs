@@ -53,10 +53,12 @@
 
         <script>
             function progressBar(){
-                var progressBar = $('#progressbar')
-                var progressBox = $('.progressbox')
+                var progressBar = $("#progressbar")
+                var progressBox = $("#progressbar").find(".progressbox")
+                console.log(progressBox.css("width"))
                 progressBar.click(function(event){
                     var offset = $(this).offset();
+                    console.log(offset);
                 });
                 setInterval(function(){
                     if(player == null || progressBar == null){
@@ -64,7 +66,7 @@
                     }
                     var fraction = player.getCurrentTime()/player.getDuration()*100;
                     console.log(fraction);
-                    progressBox.css("left", fraction.toString + "%");
+                    progressBox.css("left", fraction.toString() + "%");
                 }, 200);
             }
         </script>
@@ -81,23 +83,23 @@
             var player;
             function onYouTubeIframeAPIReady() {
                 player = new YT.Player('player', {
-                height: '480',
-                width: '720',
-                videoId: '4zoQfqPnMA8',
-                playerVars: {
-                    'playsinline': 1
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                },
-                playerVars: {
-                    'controls': 0,
-                    'disablekb': 1,
-                    'modestbranding': 1,
-                    'rel': 0,
-                    'showinfo': 0
-                }
+                    height: '480',
+                    width: '720',
+                    videoId: '4zoQfqPnMA8',
+                    playerVars: {
+                        'playsinline': 1
+                    },
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    },
+                    playerVars: {
+                        'controls': 0,
+                        'disablekb': 1,
+                        'modestbranding': 1,
+                        'rel': 0,
+                        'showinfo': 0
+                    }
                 });
             }
 
