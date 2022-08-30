@@ -40,22 +40,25 @@
     <div class="container">
         <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
         <div id="player"></div>
-        <div id="bottom">
-            <div id="controls">
+        <div id="bottom-container">
+            <div id="progressbar-container">
+                <div id="progressline"></div>
+                <div id="progressbox"></div>
+            </div>
+            <div id="control-container">
                 <button id="playbtn" type="submit" onclick="playVideo()"><img src="play-button.png"/></button>
                 <button id="pausebtn" type="submit" onclick="pauseVideo()"><img src="pause-button.png"/></button>
-            </div>
-            <div id="progressbar">
-                <div class="progressline"></div>
-                <div class="progressbox"></div>
+                
+                <div id="slider">
+                    <input type="range" min="0" max="100" value="50">
+                </div>
             </div>
         </div>
 
         <script>
             function progressBar(){
-                var progressBar = $("#progressbar")
-                var progressBox = $("#progressbar").find(".progressbox")
-                console.log(progressBox.css("width"))
+                var progressBar = $("#progressbar-container")
+                var progressBox = $("#progressbar-container #progressbox")
                 progressBar.click(function(event){
                     var offset = $(this).offset();
                     console.log(offset);
@@ -65,7 +68,6 @@
                         return;
                     }
                     var fraction = player.getCurrentTime()/player.getDuration()*100;
-                    console.log(fraction);
                     progressBox.css("left", fraction.toString() + "%");
                 }, 200);
             }
@@ -85,7 +87,7 @@
                 player = new YT.Player('player', {
                     height: '480',
                     width: '720',
-                    videoId: '4zoQfqPnMA8',
+                    videoId: 'BZP1rYjoBgI',
                     playerVars: {
                         'playsinline': 1
                     },
@@ -115,7 +117,6 @@
             var done = false;
             function onPlayerStateChange(event) {
                 if (event.data == YT.PlayerState.PLAYING && !done) {
-                    setTimeout(stopVideo, 6000);
                     done = true;
                 }
             }
@@ -127,6 +128,9 @@
             }
             function pauseVideo(){
                 player.pauseVideo();
+            }
+            function muteVideo(){
+                player.mute();
             }
         </script>
 
